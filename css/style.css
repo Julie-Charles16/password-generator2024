@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+}
+.genPassword{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 50vh;
+}
+.genPassword1{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+   
+}
+.form-control{
+    width: 6rem;
+}
+button{
+    height: 40px;
+    width: 180px;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    font-family: monospace;
+    font-size: 17px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+button:hover{
+    color: black;
+    background-color: white;
+}
+
+input {
+    padding: 10px; /* Réduire le padding pour que l'input soit plus haut */
+    height: 40px; /* Assurez-vous que la hauteur est cohérente avec le bouton */
+    width: 200px; /* Vous pouvez ajuster la largeur ici */
+    border-radius: 5px;
+    border: 2px solid rgb(212, 211, 211);
+    outline: none;
+    font-size: 17px;
+    
+}
+
+
+
+textarea {
+    font-family: monospace; /* Pour une meilleure lisibilité */
+    user-select: none;
+    border-radius: 5px;
+    border: 2px solid rgb(212, 211, 211);
+    outline: none;
+    font-size: 25px;
+}
+
+.row {
+    display: flex; /* Utiliser flexbox pour aligner les éléments */
+    align-items: center; /* Alignement vertical centré */
+    gap: 10px;
+}
+

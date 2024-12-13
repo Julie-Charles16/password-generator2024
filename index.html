@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="css/style.css">
+        <title>Générateur de mdp</title>
+
+    </head>
+    <body>
+        <h1 class="m-3">Générateur de mot de passe</h1>
+        <div class="genPassword">
+
+            <div class="row g-3 align-items-end">
+                <button type="button" class="btn btn-primary" onclick="genPassword()">Générer un mdp</button>
+                <input type="number" class="form-control" id="passwordLength" placeholder="12" step="1" min="12" max="128" required>
+                <textarea id="password" class="form-control" rows="1" readonly style="overflow:hidden; resize:none; width: 350px; min-height: 40px;"></textarea>
+            </div>
+        
+
+            <div class="m-3">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="chiffres">
+                    <label class="form-check-label" for="inlineCheckbox1">Chiffres</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="lettres">
+                    <label class="form-check-label" for="inlineCheckbox2">Lettres</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="symboles">
+                    <label class="form-check-label" for="inlineCheckbox3">Symboles</label>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function genPassword() {
+                const digits = "0123456789";
+                const lowercase = "abcdefghijklmnopqrstuvwxyz";
+                const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                const symbols = "!@#$%^&*()";
+                let chars = "";
+    
+                // Vérifiez quelles options sont sélectionnées
+                if (document.getElementById("inlineCheckbox1").checked) {
+                    chars += digits; // Ajouter des chiffres
+                }
+                if (document.getElementById("inlineCheckbox2").checked) {
+                    chars += lowercase + uppercase; // Ajouter des lettres (minuscules et majuscules)
+                }
+                if (document.getElementById("inlineCheckbox3").checked) {
+                    chars += symbols; // Ajouter des symboles
+                }
+    
+                // Validation de la longueur du mot de passe
+                const passwordLength = document.getElementById("passwordLength").value;
+                if (!passwordLength || passwordLength < 12 || passwordLength > 128 || chars.length === 0) {
+                    alert("Veuillez entrer une longueur de mot de passe valide (12 à 128 caractères) et sélectionner au moins un type de caractère.");
+                    return;
+                }
+    
+                let password = "";
+                for (let i = 0; i < passwordLength; i++) {
+                    const randomIndex = Math.floor(Math.random() * chars.length);
+                    password += chars[randomIndex];
+                }
+    
+                const passwordField = document.getElementById("password");
+                passwordField.value = password;
+    
+                // Ajustement de la hauteur du textarea en fonction du contenu
+                passwordField.style.height = "auto"; // Réinitialiser la hauteur
+                passwordField.style.height = passwordField.scrollHeight + "px"; // Ajuster à la hauteur du contenu
+            }
+        </script>
+    </body>
+    
+    
+</html>
